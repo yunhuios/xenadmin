@@ -181,6 +181,19 @@ namespace XenAdmin.Wizards.PatchingWizard
                         PageLeaveCancelled(string.Format(Messages.UPDATES_WIZARD_FILE_NOT_FOUND, SelectedNewPatch));
                     }
                 }
+                else //In Automatic Mode
+                {
+                    var downloadUpdatesAction = new DownloadUpdatesXmlAction(false, true, true, Updates.CheckForUpdatesUrl);
+                    var dialog = new ActionProgressDialog(downloadUpdatesAction, ProgressBarStyle.Marquee);
+
+                    dialog.ShowDialog(this.Parent); //Will block until dialog closes, action completed
+
+                    if (!downloadUpdatesAction.Succeeded)
+                    {
+                        cancel = true;
+
+                    }
+                }
             }
 
             Updates.CheckForUpdatesCompleted -= CheckForUpdates_CheckForUpdatesCompleted;
