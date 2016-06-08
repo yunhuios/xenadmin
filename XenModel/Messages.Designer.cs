@@ -25586,7 +25586,7 @@ namespace XenAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update process was not completed successfully. Check .
+        ///   Looks up a localized string similar to Update process was not completed successfully..
         /// </summary>
         public static string PATCHINGWIZARD_AUTOUPDATINGPAGE_ERROR {
             get {
