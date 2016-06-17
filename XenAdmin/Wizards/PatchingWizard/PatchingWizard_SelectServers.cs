@@ -100,24 +100,33 @@ namespace XenAdmin.Wizards.PatchingWizard
                 xenConnections.Sort();
                 foreach (IXenConnection xenConnection in xenConnections)
                 {
-                    Pool pool = Helpers.GetPool(xenConnection);
-                    bool hasPool = true;
-                    if (pool != null)
+                    if (IsInAutomaticMode)
                     {
-                        int index = dataGridViewHosts.Rows.Add(new PatchingHostsDataGridViewRow(pool));
-                        Host master = pool.Connection.Resolve(pool.master);
-                        EnabledRow(master, SelectedUpdateType, index);
+                        if (!xenConnection.IsConnected)
+                            continue;
+
+                        var host = Helpers.GetMaster(xenConnection);
+                        int index = dataGridViewHosts.Rows.Add(new PatchingHostsDataGridViewRow(host, false));
+                        EnabledRow(host, SelectedUpdateType, index);
                     }
                     else
                     {
-                        hasPool = false;
-                    }
-                    Host[] hosts = xenConnection.Cache.Hosts;
-                    Array.Sort(hosts);
-                    foreach (Host host in hosts)
-                    {
-                        int index = dataGridViewHosts.Rows.Add(new PatchingHostsDataGridViewRow(host, hasPool));
-                        EnabledRow(host, SelectedUpdateType, index);
+                        Pool pool = Helpers.GetPool(xenConnection);
+                        bool hasPool = pool != null;
+                        if (hasPool)
+                        {
+                            int index = dataGridViewHosts.Rows.Add(new PatchingHostsDataGridViewRow(pool));
+                            Host master = pool.Connection.Resolve(pool.master);
+                            EnabledRow(master, SelectedUpdateType, index);
+                        }
+
+                        Host[] hosts = xenConnection.Cache.Hosts;
+                        Array.Sort(hosts);
+                        foreach (Host host in hosts)
+                        {
+                            int index = dataGridViewHosts.Rows.Add(new PatchingHostsDataGridViewRow(host, hasPool));
+                            EnabledRow(host, SelectedUpdateType, index);
+                        }
                     }
                 }
 
@@ -162,7 +171,7 @@ namespace XenAdmin.Wizards.PatchingWizard
                 else
                 {
                     row.Enabled = false;
-                    //add tooltip why not
+                    row.Cells[3].ToolTipText = Messages.PATCHINGWIZARD_SELECTSERVERPAGE_SERVER_NOT_AUTO_UPGRADABLE;
                 }
 
                 return;
