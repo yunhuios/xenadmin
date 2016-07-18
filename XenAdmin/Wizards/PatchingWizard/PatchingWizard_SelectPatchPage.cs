@@ -45,6 +45,7 @@ using XenAdmin.Dialogs;
 using System.Drawing;
 using XenAdmin.Alerts;
 using System.Linq;
+using XenAdmin.Actions;
 
 
 namespace XenAdmin.Wizards.PatchingWizard
