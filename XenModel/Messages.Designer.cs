@@ -26081,6 +26081,24 @@ namespace XenAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_AUTOMATIC_MODE {
+            get {
+                return ResourceManager.GetString("PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_AUTOMATIC_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_DEFAULT {
+            get {
+                return ResourceManager.GetString("PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_DEFAULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatic update has finished..
         /// </summary>
         public static string PATCHINGWIZARD_UPDATES_DONE_AUTOMATIC_MODE {
