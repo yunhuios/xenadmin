@@ -26063,6 +26063,15 @@ namespace XenAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This server is already up-to-date..
+        /// </summary>
+        public static string PATCHINGWIZARD_SELECTSERVERPAGE_SERVER_UP_TO_DATE {
+            get {
+                return ResourceManager.GetString("PATCHINGWIZARD_SELECTSERVERPAGE_SERVER_UP_TO_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Servers.
         /// </summary>
         public static string PATCHINGWIZARD_SELECTSERVERPAGE_TEXT {
@@ -26081,7 +26090,8 @@ namespace XenAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Select one or more pools or standalone hosts that you want to have automatically updated.
+        ///Greyed out servers cannot be updated automatically..
         /// </summary>
         public static string PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_AUTOMATIC_MODE {
             get {
@@ -26090,7 +26100,8 @@ namespace XenAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Select one or more servers from the list of available servers.
+        ///Servers where the selected update cannot be applied appear disabled in this list..
         /// </summary>
         public static string PATCHINGWIZARD_SELECTSERVERPAGGE_RUBRIC_DEFAULT {
             get {
